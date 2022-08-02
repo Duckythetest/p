@@ -1,25 +1,3 @@
-#------------------------------------------------------------------------------------------------------------------------------------
-
-function Get-email {
-    
-    try {
-
-    $email = GPRESULT -Z /USER $Env:username | Select-String -Pattern "([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})" -AllMatches;$email = ("$email").Trim()
-	return $email
-    }
-
-# If no email is detected function will return backup message for sapi speak
-
-    # Write Error is just for troubleshooting
-    catch {Write-Error "An email was not found" 
-    return "No Email Detected"
-    -ErrorAction SilentlyContinue
-    }        
-}
-
-$EM = Get-email
-
-
 ############################################################################################################################################################
 
 # Get nearby wifi networks
@@ -172,10 +150,6 @@ $FileName = "$env:HOMEPATH\Desktop\Recon.txt"
 Clear-Host
 Write-Host 
 
-echo $FN >> $FileName
-echo "" >> $FileName
-echo "==================================================================" >> $FileName
-echo "Email:" >> $FileName
 echo "==================================================================" >> $FileName
 echo "Nearby Wifi:" >> $FileName
 echo "==================================================================" >> $FileName
