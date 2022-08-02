@@ -174,6 +174,7 @@ Write-Host
 
 echo $FN >> $FileName
 echo "" >> $FileName
+echo "==================================================================" >> $FileName
 echo "Email:" >> $FileName
 echo "==================================================================" >> $FileName
 echo "Nearby Wifi:" >> $FileName
