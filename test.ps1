@@ -172,7 +172,6 @@ $FileName = "$env:HOMEPATH\Desktop\test.txt"
 Clear-Host
 Write-Host 
 
-echo "==================================================================" >> $FileName
 echo $FN >> $FileName
 echo "" >> $FileName
 echo "Email:" >> $FileName
@@ -212,7 +211,7 @@ Capacity: " + $computerRamCapacity+ ($computerRam| out-string) >> $env:TMP\$File
 =================================================================="+ (Get-WmiObject win32_bios| out-string) >> $FileName
 
 
-"Users:
+"Local-Users:
 =================================================================="+ ($luser| out-string) >> $FileName
 
 "HDDs:
@@ -235,9 +234,6 @@ Computers MAC address: " + $MAC >> $FileName
 
 "listeners / ActiveTcpConnections
 =================================================================="+ ($listener| Out-String) >> $FileName
-
-"Current running process: 
-=================================================================="+ ($process| Out-String) >> $FileName
 
 
 ############################################################################################################################################################
