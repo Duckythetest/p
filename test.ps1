@@ -1,27 +1,3 @@
-############################################################################################################################################################
-
- function Get-fullName {
-
-    try {
-
-    $fullName = Net User $Env:username | Select-String -Pattern "Full Name";$fullName = ("$fullName").TrimStart("Full Name")
-
-    }
- 
- # If no name is detected function will return $env:UserName 
-
-    # Write Error is just for troubleshooting 
-    catch {Write-Error "No name was detected" 
-    return $env:UserName
-    -ErrorAction SilentlyContinue
-    }
-
-    return $fullName 
-
-}
-
-$FN = Get-fullName
-
 #------------------------------------------------------------------------------------------------------------------------------------
 
 function Get-email {
@@ -174,9 +150,6 @@ $listener = $listener | foreach-object {
 # process last
 $process = $process | Sort-Object ProcessName | Format-Table Handle, ProcessName, ExecutablePath, CommandLine
 
-# service
-$service=Get-WmiObject win32_service | select State, Name, DisplayName, PathName, @{Name="Sort";Expression={$_.State + $_.Name}} | Sort-Object Sort | Format-Table State, Name, DisplayName, PathName
-
 # installed software (get uninstaller)
 $software=Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | where { $_.DisplayName -notlike $null } |  Select-Object DisplayName, DisplayVersion, Publisher, InstallDate | Sort-Object DisplayName | Format-Table -AutoSize
 
@@ -199,7 +172,6 @@ $FileName = "$env:HOMEPATH\Desktop\test.txt"
 Clear-Host
 Write-Host 
 
-echo "Name:" >> $FileName
 echo "==================================================================" >> $FileName
 echo $FN >> $FileName
 echo "" >> $FileName
@@ -240,7 +212,7 @@ Capacity: " + $computerRamCapacity+ ($computerRam| out-string) >> $env:TMP\$File
 =================================================================="+ (Get-WmiObject win32_bios| out-string) >> $FileName
 
 
-"Local-user:
+"Users:
 =================================================================="+ ($luser| out-string) >> $FileName
 
 "HDDs:
