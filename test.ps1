@@ -211,6 +211,6 @@ computerMAC,computerSystem,computerBIOS,computerOs,
 computerCpu, computerMainboard,computerRamCapacity,
 computerRam,driveType,Hdds,RDP,WLANProfileNames,WLANProfileName,
 Output,WLANProfileObjects,WLANProfilePassword,WLANProfileObject,luser,
-process,listener,listenerItem,,software,drivers,videocard,
+process,listener,listenerItem,software,drivers,videocard,
 vault -ErrorAction SilentlyContinue -Force
 
